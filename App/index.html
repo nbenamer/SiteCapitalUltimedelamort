@@ -745,232 +745,179 @@
         </div>
       </section>
 
-      <!-- Pricing section -->
-      <section id="pricing" class="section-area">
-        <div class="container">
-          <div class="scroll-revealed text-center max-w-[550px] mx-auto mb-12">
-            <h6 class="mb-2 block text-lg font-semibold text-primary">
-             Nos Prix
+<!-- Pricing section -->
+<section id="pricing" class="section-area">
+  <div class="container">
+      <div class="scroll-revealed text-center max-w-[550px] mx-auto mb-12">
+          <!-- Section title and description -->
+          <h6 class="mb-2 block text-lg font-semibold text-primary">Nos Prix</h6>
+          <h2 class="mb-6">Découvrez nos offres flexibles</h2>
+          <p>Choisissez le plan qui correspond le mieux à vos besoins.</p>
+      </div>
 
-            </h6>
-            <h2 class="mb-6">Découvrez nos offres flexibles</h2>
-            <p>
-              Choisissez le plan qui correspond le mieux à vos besoins.
-            </p>
+      <!-- Toggle B - A custom toggle switch component -->
+      <div class="flex items-center justify-center w-full mb-12">
+          <label for="toggleB" class="flex items-center cursor-pointer">
+              <!-- Outer container for the toggle -->
+              <div class="relative">
+                  <!-- Hidden checkbox input -->
+                  <input type="checkbox" id="toggleB" class="sr-only" onchange="togglePricing()">
+                  <!-- Background track of the toggle switch -->
+                  <div class="block bg-gray-600 w-14 h-8 rounded-full"></div>
+                  <!-- Movable dot of the toggle switch -->
+                  <div class="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition transform"></div>
+              </div>
+              <!-- Label text next to the toggle switch -->
+              <div class="ml-3 text-gray-700 font-medium">Basculer les prix</div>
+          </label>
+      </div>
+
+      <style>/* Toggle B */
+      input:checked ~ .dot {
+        transform: translateX(100%);
+        background-color: #48bb78;
+      }</style>
+      <!-- Pricing cards section -->
+      <div class="row">
+          <!-- First pricing card -->
+          <div class="scroll-revealed col-12 sm:col-6 lg:col-4">
+              <div class="rounded-xl py-12 px-9 bg-body-light-1 dark:bg-body-dark-12/10 text-center shadow-card-1 hover:shadow-lg">
+                  <div>
+                      <!-- Title of the pricing plan -->
+                      <h6 id="title1" class="inline-block font-medium text-base mb-6 text-primary bg-primary/10 rounded-md py-2 px-8 pricing-title">Débutant – 50K</h6>
+                      <div class="pt-8">
+                          <!-- Price amount -->
+                          <h2 id="price1" class="font-semibold inline-block relative pl-4 text-[55px]">
+                              <span class="font-normal text-body-light-11 dark:text-body-dark-11 text-[1.25rem] absolute left-0 top-1.5">$</span>590
+                          </h2>
+                      </div>
+                  </div>
+                  <!-- Buy button -->
+                  <div class="pt-8 pb-10">
+                      <a href="javascript:void(0)" class="inline-block font-medium px-6 py-3 rounded-md bg-primary/10 text-primary hover:bg-primary hover:text-primary-color focus:bg-primary focus:text-primary-color">Acheter</a>
+                  </div>
+                  <!-- Features list -->
+                  <div>
+                      <ul>
+                          <li class="text-left relative mb-3 inline-flex gap-3 w-full">
+                              <i class="lni lni-checkmark-circle text-primary text-base leading-[24px]"></i>
+                              <span>4 semaines en moyenne</span>
+                          </li>
+                          <li class="text-left relative mb-3 inline-flex gap-3 w-full">
+                              <i class="lni lni-checkmark-circle text-primary text-base leading-[24px]"></i>
+                              <span>98% de succès</span>
+                          </li>
+                          <li class="text-left relative mb-3 inline-flex gap-3 w-full">
+                              <i class="lni lni-checkmark-circle text-body-light-11 dark:text-body-dark-11 text-base leading-[24px]"></i>
+                              <span>Accompagnement 24h/7</span>
+                          </li>
+                          <li class="text-left relative mb-3 inline-flex gap-3 w-full">
+                              <i class="lni lni-checkmark-circle text-body-light-11 dark:text-body-dark-11 text-base leading-[24px]"></i>
+                              <span>Challenge prop firm</span>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
           </div>
 
-          <div class="row">
-            <div class="scroll-revealed col-12 sm:col-6 lg:col-4">
-              <div
-                class="rounded-xl py-12 px-9 bg-body-light-1 dark:bg-body-dark-12/10 text-center shadow-card-1 hover:shadow-lg"
-              >
-                <div>
-                  <h6
-                    class="inline-block font-medium text-base mb-6 text-primary bg-primary/10 rounded-md py-2 px-8 pricing-title"
-                  >
-                  Débutant – 50K
-                  </h6>
-                
-                  <div class="pt-8">
-                    <h2
-                      class="font-semibold inline-block relative pl-4 text-[55px]"
-                    >
-                      <span
-                        class="font-normal text-body-light-11 dark:text-body-dark-11 text-[1.25rem] absolute left-0 top-1.5"
-                        >$</span
-                      >590
-                      </span
-                      >
-                    </h2>
+          <!-- Second pricing card -->
+          <div class="scroll-revealed col-12 sm:col-6 lg:col-4">
+              <div class="rounded-xl py-12 px-9 bg-body-light-1 dark:bg-body-dark-12/10 text-center shadow-lg">
+                  <div>
+                      <h6 id="title2" class="inline-block font-medium text-base mb-6 text-primary-color bg-primary rounded-md py-2 px-8 pricing-title">Intermédiaire – 100K</h6>
+                      <div class="pt-8">
+                          <h2 id="price2" class="font-semibold inline-block relative pl-4 text-[55px]">
+                              <span class="font-normal text-body-light-11 dark:text-body-dark-11 text-[1.25rem] absolute left-0 top-1.5">$</span>990
+                          </h2>
+                      </div>
                   </div>
-                </div>
-                <div class="pt-8 pb-10">
-                  <a
-                    href="javascript:void(0)"
-                    class="inline-block font-medium px-6 py-3 rounded-md bg-primary/10 text-primary hover:bg-primary hover:text-primary-color focus:bg-primary focus:text-primary-color"
-                    >Acheter</a
-                  >
-                </div>
-                <div>
-                  <ul>
-                    <li
-                      class="text-left relative mb-3 inline-flex gap-3 w-full"
-                    >
-                      <i
-                        class="lni lni-checkmark-circle text-primary text-base leading-[24px]"
-                      ></i>
-                      <span>4 semaines en moyenne</span>
-                    </li>
-                    <li
-                      class="text-left relative mb-3 inline-flex gap-3 w-full"
-                    >
-                      <i
-                        class="lni lni-checkmark-circle text-primary text-base leading-[24px]"
-                      ></i>
-                      <span>98% de succès</span>
-                    </li>
-                    <li
-                      class="text-left relative mb-3 inline-flex gap-3 w-full"
-                    >
-                      <i
-                        class="lni lni-checkmark-circle text-body-light-11 dark:text-body-dark-11 text-base leading-[24px]"
-                      ></i>
-                      <span>Accompagnement 24h/7</span>
-                    </li>
-                    <li
-                      class="text-left relative mb-3 inline-flex gap-3 w-full"
-                    >
-                      <i
-                        class="lni lni-checkmark-circle text-body-light-11 dark:text-body-dark-11 text-base leading-[24px]"
-                      ></i>
-                      <span>Challenge prop firm</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="scroll-revealed col-12 sm:col-6 lg:col-4">
-              <div
-                class="rounded-xl py-12 px-9 bg-body-light-1 dark:bg-body-dark-12/10 text-center shadow-lg"
-              >
-                <div>
-                  <h6
-                    class="inline-block font-medium text-base mb-6 text-primary-color bg-primary rounded-md py-2 px-8 pricing-title"
-                  >
-                  Intermédiaire – 100K
-                  </h6>
-                  
-                  <div class="pt-8">
-                    <h2
-                      class="font-semibold inline-block relative pl-4 text-[55px]"
-                    >
-                      <span
-                        class="font-normal text-body-light-11 dark:text-body-dark-11 text-[1.25rem] absolute left-0 top-1.5"
-                        >$</span
-                      >990
-                      
-                    </h2>
+                  <div class="pt-8 pb-10">
+                      <a href="javascript:void(0)" class="inline-block font-medium px-6 py-3 rounded-md bg-primary text-primary-color hover:bg-primary-light-10 dark:hover:bg-primary-dark-10 hover:text-primary-color focus:bg-primary-light-10 dark:focus:bg-primary-dark-10 focus:text-primary-color">Acheter</a>
                   </div>
-                </div>
-                <div class="pt-8 pb-10">
-                  <a
-                    href="javascript:void(0)"
-                    class="inline-block font-medium px-6 py-3 rounded-md bg-primary text-primary-color hover:bg-primary-light-10 dark:hover:bg-primary-dark-10 hover:text-primary-color focus:bg-primary-light-10 dark:focus:bg-primary-dark-10 focus:text-primary-color"
-                    >Acheter</a
-                  >
-                </div>
-                <div>
-                  <ul>
-                    <li
-                      class="text-left relative mb-3 inline-flex gap-3 w-full"
-                    >
-                      <i
-                        class="lni lni-checkmark-circle text-primary text-base leading-[24px]"
-                      ></i>
-                      <span>4 semaines en moyenne</span>
-                    </li>
-                    <li
-                      class="text-left relative mb-3 inline-flex gap-3 w-full"
-                    >
-                      <i
-                        class="lni lni-checkmark-circle text-primary text-base leading-[24px]"
-                      ></i>
-                      <span>98% de succès</span>
-                    </li>
-                    <li
-                      class="text-left relative mb-3 inline-flex gap-3 w-full"
-                    >
-                      <i
-                        class="lni lni-checkmark-circle text-primary text-base leading-[24px]"
-                      ></i>
-                      <span>Accompagnement 24h/7</span>
-                    </li>
-                    <li
-                      class="text-left relative mb-3 inline-flex gap-3 w-full"
-                    >
-                      <i
-                        class="lni lni-checkmark-circle text-body-light-11 dark:text-body-dark-11 text-base leading-[24px]"
-                      ></i>
-                      <span>Challenge prop firm</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="scroll-revealed col-12 sm:col-6 lg:col-4">
-              <div
-                class="rounded-xl py-12 px-9 bg-body-light-1 dark:bg-body-dark-12/10 text-center shadow-card-1 hover:shadow-lg"
-              >
-                <div>
-                  <h6
-                    class="inline-block font-medium text-base mb-6 text-primary bg-primary/10 rounded-md py-2 px-8 pricing-title"
-                  >
-                  Avancé – 250K
-                  </h6>
-                  
-                  <div class="pt-8">
-                    <h2
-                      class="font-semibold inline-block relative pl-4 text-[55px]"
-                    >
-                      <span
-                        class="font-normal text-body-light-11 dark:text-body-dark-11 text-[1.25rem] absolute left-0 top-1.5"
-                        >$</span
-                      >2490
-                      
-                    </h2>
+                  <div>
+                      <ul>
+                          <li class="text-left relative mb-3 inline-flex gap-3 w-full">
+                              <i class="lni lni-checkmark-circle text-primary text-base leading-[24px]"></i>
+                              <span>4 semaines en moyenne</span>
+                          </li>
+                          <li class="text-left relative mb-3 inline-flex gap-3 w-full">
+                              <i class="lni lni-checkmark-circle text-primary text-base leading-[24px]"></i>
+                              <span>98% de succès</span>
+                          </li>
+                          <li class="text-left relative mb-3 inline-flex gap-3 w-full">
+                              <i class="lni lni-checkmark-circle text-primary text-base leading-[24px]"></i>
+                              <span>Accompagnement 24h/7</span>
+                          </li>
+                          <li class="text-left relative mb-3 inline-flex gap-3 w-full">
+                              <i class="lni lni-checkmark-circle text-primary text-base leading-[24px]"></i>
+                              <span>Challenge prop firm</span>
+                          </li>
+                      </ul>
                   </div>
-                </div>
-                <div class="pt-8 pb-10">
-                  <a
-                    href="javascript:void(0)"
-                    class="inline-block font-medium px-6 py-3 rounded-md bg-primary/10 text-primary hover:bg-primary hover:text-primary-color focus:bg-primary focus:text-primary-color"
-                    >Acheter</a
-                  >
-                </div>
-                <div>
-                  <ul>
-                    <li
-                      class="text-left relative mb-3 inline-flex gap-3 w-full"
-                    >
-                      <i
-                        class="lni lni-checkmark-circle text-primary text-base leading-[24px]"
-                      ></i>
-                      <span>4 semaines en moyenne</span>
-                    </li>
-                    <li
-                      class="text-left relative mb-3 inline-flex gap-3 w-full"
-                    >
-                      <i
-                        class="lni lni-checkmark-circle text-primary text-base leading-[24px]"
-                      ></i>
-                      <span>98% de succès</span>
-                    </li>
-                    <li
-                      class="text-left relative mb-3 inline-flex gap-3 w-full"
-                    >
-                      <i
-                        class="lni lni-checkmark-circle text-primary text-base leading-[24px]"
-                      ></i>
-                      <span>Accompagnement 24h/7</span>
-                    </li>
-                    <li
-                      class="text-left relative mb-3 inline-flex gap-3 w-full"
-                    >
-                      <i
-                        class="lni lni-checkmark-circle text-primary text-base leading-[24px]"
-                      ></i>
-                      <span>Challenge prop firm</span>
-                    </li>
-                  </ul>
-                </div>
               </div>
-            </div>
           </div>
-          
-        </div>
-      </section>
+
+          <!-- Third pricing card -->
+          <div class="scroll-revealed col-12 sm:col-6 lg:col-4">
+              <div class="rounded-xl py-12 px-9 bg-body-light-1 dark:bg-body-dark-12/10 text-center shadow-card-1 hover:shadow-lg">
+                  <div>
+                      <h6 id="title3" class="inline-block font-medium text-base mb-6 text-primary bg-primary/10 rounded-md py-2 px-8 pricing-title">Avancé – 250K</h6>
+                      <div class="pt-8">
+                          <h2 id="price3" class="font-semibold inline-block relative pl-4 text-[55px]">
+                              <span class="font-normal text-body-light-11 dark:text-body-dark-11 text-[1.25rem] absolute left-0 top-1.5">$</span>2490
+                          </h2>
+                      </div>
+                  </div>
+                  <div class="pt-8 pb-10">
+                      <a href="javascript:void(0)" class="inline-block font-medium px-6 py-3 rounded-md bg-primary/10 text-primary hover:bg-primary hover:text-primary-color focus:bg-primary focus:text-primary-color">Acheter</a>
+                  </div>
+                  <div>
+                      <ul>
+                          <li class="text-left relative mb-3 inline-flex gap-3 w-full">
+                              <i class="lni lni-checkmark-circle text-primary text-base leading-[24px]"></i>
+                              <span>4 semaines en moyenne</span>
+                          </li>
+                          <li class="text-left relative mb-3 inline-flex gap-3 w-full">
+                              <i class="lni lni-checkmark-circle text-primary text-base leading-[24px]"></i>
+                              <span>98% de succès</span>
+                          </li>
+                          <li class="text-left relative mb-3 inline-flex gap-3 w-full">
+                              <i class="lni lni-checkmark-circle text-primary text-base leading-[24px]"></i>
+                              <span>Accompagnement 24h/7</span>
+                          </li>
+                          <li class="text-left relative mb-3 inline-flex gap-3 w-full">
+                              <i class="lni lni-checkmark-circle text-primary text-base leading-[24px]"></i>
+                              <span>Challenge prop firm</span>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<script>
+  // JavaScript function to toggle pricing amounts and titles
+  function togglePricing() {
+      const pricingData = [
+          { id: 'price1', titleId: 'title1', value: 590, altValue: 650, title: 'Pro Initial – 500K', altTitle: 'Débutant – 75K' },
+          { id: 'price2', titleId: 'title2', value: 990, altValue: 1100, title: 'Performance Plus – 1M', altTitle: 'Intermédiaire – 120K' },
+          { id: 'price3', titleId: 'title3', value: 2490, altValue: 2700, title: 'Business Ultime – 5M', altTitle: 'Avancé – 300K' }
+      ];
+
+      pricingData.forEach(data => {
+          const priceElement = document.getElementById(data.id);
+          const titleElement = document.getElementById(data.titleId);
+
+          const currentPrice = priceElement.textContent.trim().replace('$', '');
+          priceElement.textContent = `$${currentPrice == data.value ? data.altValue : data.value}`;
+
+          const currentTitle = titleElement.textContent.trim();
+          titleElement.textContent = currentTitle === data.title ? data.altTitle : data.title;
+      });
+  }
+</script>
 
       <!-- Call action section -->
       <section
@@ -2923,5 +2870,6 @@
         },
       });
     </script>
+    <script src="https://cdn.tailwindcss.com"></script>
   </body>
 </html>
