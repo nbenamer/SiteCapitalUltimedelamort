@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ValideMonChallenge</title>
+  <link rel="icon" href="favicon.ico"><link href="dist/styles.css" rel="stylesheet"></head>
+  <link href="dist/custom.css" rel="stylesheet"></head>
+  <body
+    x-data="{ page: 'home', 'darkMode': true, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
+    x-init="
+         darkMode = JSON.parse(localStorage.getItem('darkMode'));
+         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+    :class="{'b eh': darkMode === true}"
+  >
+    <!-- ===== Header Start ===== -->
+    <header
+  class="g s r vd ya cj"
+  :class="{ 'hh sm _k dj bl ll' : stickyMenu }"
+  @scroll.window="stickyMenu = (window.pageYOffset > 20) ? true : false"
+>
+  <div class="bb ze ki xn 2xl:ud-px-0 oo wf yf i">
+    <div class="vd to/4 tc wf yf">
+      <a href="index.html">
+        <img class="om" src="imagesV2/LogoValide.png" alt="Logo Light" />
+        <img class="xc nm" src="imagesV2/LogoValide.png" alt="Logo Dark" />
+      </a>
+
+      <!-- Hamburger Toggle BTN -->
+      <button class="po rc" @click="navigationOpen = !navigationOpen">
+        <span class="rc i pf re pd">
+          <span class="du-block h q vd yc">
+            <span class="rc i r s eh um tg te rd eb ml jl dl" :class="{ 'ue el': !navigationOpen }"></span>
+            <span class="rc i r s eh um tg te rd eb ml jl fl" :class="{ 'ue qr': !navigationOpen }"></span>
+            <span class="rc i r s eh um tg te rd eb ml jl gl" :class="{ 'ue hl': !navigationOpen }"></span>
+          </span>
+          <span class="du-block h q vd yc lf">
+            <span class="rc eh um tg ml jl el h na r ve yc" :class="{ 'sd dl': !navigationOpen }"></span>
+            <span class="rc eh um tg ml jl qr h s pa vd rd" :class="{ 'sd rr': !navigationOpen }"></span>
+          </span>
+        </span>
+      </button>
+      <!-- Hamburger Toggle BTN -->
+    </div>
+
+    <div
+      class="vd wo/4 sd qo f ho oo wf yf"
+      :class="{ 'd hh rm sr td ud qg ug jc yh': navigationOpen }"
+    >
+      <nav>
+        <ul class="tc _o sf yo cg ep">
+          <li><a href="index.html" class="xl" :class="{ 'mk': page === 'home' }">Acceuil</a></li>
+          <li><a href="index.html#offres" class="xl">Offres</a></li>
+          <li class="c i" x-data="{ dropdown: false }">
+            <a
+              href="#"
+              class="xl tc wf yf bg"
+              @click.prevent="dropdown = !dropdown"
+              :class="{ 'mk': page === 'blog-grid' || page === 'blog-single' || page === 'signin' || page === 'signup' || page === '404' }"
+            >
+              Pages
+
+              <svg
+              :class="{ 'wh': dropdown }"
+              class="th mm we fd pf" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+              </svg>
+            </a>
+
+            <!-- Dropdown Start -->
+            <ul class="a" :class="{ 'tc': dropdown }">
+              <li><a href="blog-grid.html" class="xl" :class="{ 'mk': page === 'blog-grid' }">Blog Catalogue</a></li>
+              <li><a href="blog-single.html" class="xl" :class="{ 'mk': page === 'blog-single' }">Article</a></li>
+            </ul>
+            <!-- Dropdown End -->
+          </li>
+          <li><a href="index.html#support" class="xl">Support</a></li>
+        </ul>
+      </nav>
+
+      <div class="tc wf ig pb no">
+        <div class="pc h io pa ra" :class="navigationOpen ? '!-ud-visible' : 'd'">
+          <label class="rc ab i">
+            <input type="checkbox" :value="darkMode" @change="darkMode = !darkMode" class="pf vd yc uk h r za ab" />
+            <!-- Icon Sun -->
+            <svg :class="{ 'wn' : page === 'home', 'xh' : page === 'home' && stickyMenu }" class="th om" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.0908 18.6363C10.3549 18.6363 8.69 17.9467 7.46249 16.7192C6.23497 15.4916 5.54537 13.8268 5.54537 12.0908C5.54537 10.3549 6.23497 8.69 7.46249 7.46249C8.69 6.23497 10.3549 5.54537 12.0908 5.54537C13.8268 5.54537 15.4916 6.23497 16.7192 7.46249C17.9467 8.69 18.6363 10.3549 18.6363 12.0908C18.6363 13.8268 17.9467 15.4916 16.7192 16.7192C15.4916 17.9467 13.8268 18.6363 12.0908 18.6363ZM12.0908 16.4545C13.2481 16.4545 14.358 15.9947 15.1764 15.1764C15.9947 14.358 16.4545 13.2481 16.4545 12.0908C16.4545 10.9335 15.9947 9.8236 15.1764 9.00526C14.358 8.18692 13.2481 7.72718 12.0908 7.72718C10.9335 7.72718 9.8236 8.18692 9.00526 9.00526C8.18692 9.8236 7.72718 10.9335 7.72718 12.0908C7.72718 13.2481 8.18692 14.358 9.00526 15.1764C9.8236 15.9947 10.9335 16.4545 12.0908 16.4545ZM10.9999 0.0908203H13.1817V3.36355H10.9999V0.0908203ZM10.9999 20.8181H13.1817V24.0908H10.9999V20.8181ZM2.83446 4.377L4.377 2.83446L6.69082 5.14828L5.14828 6.69082L2.83446 4.37809V4.377ZM17.4908 19.0334L19.0334 17.4908L21.3472 19.8046L19.8046 21.3472L17.4908 19.0334ZM19.8046 2.83337L21.3472 4.377L19.0334 6.69082L17.4908 5.14828L19.8046 2.83446V2.83337ZM5.14828 17.4908L6.69082 19.0334L4.377 21.3472L2.83446 19.8046L5.14828 17.4908ZM24.0908 10.9999V13.1817H20.8181V10.9999H24.0908ZM3.36355 10.9999V13.1817H0.0908203V10.9999H3.36355Z" fill=""/>
+            </svg>
+            <!-- Icon Sun -->
+            <img class="xc nm" src="images/icon-moon.svg" alt="Moon" />
+          </label>
+        </div>
+
+        <a href="signin.html" :class="{ 'nk yl' : page === 'home', 'ok' : page === 'home' && stickyMenu }" class="ek pk xl">S'identifier</a>
+        <a href="signup.html" :class="{ 'hh/[0.15]' : page === 'home', 'sh' : page === 'home' && stickyMenu }" class="lk gh dk rg tc wf xf _l gi hi">Se connecter</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <!-- ===== Header End ===== -->
+
+    <main>
+      <!-- ===== Blog Grid Start ===== -->
+      <section class="ji gp uq">
+        <div class="bb ye ki xn vq jb jo">
+          <div class="wc qf pn xo zf iq">
+            <!-- Blog Item -->
+            <div class="animate_top sg vk rm xm">
+              <div class="c rc i z-1 pg">
+                <img class="w-full" src="images/Blog3.png" alt="Blog" />
+
+                <div
+                  class="im h r s df vd yc wg tc wf xf al hh/20 nl il z-10"
+                >
+                  <a href="./blog-single.html" class="vc ek rg lk gh sl ml il gi hi"
+                    >En savoir plus</a
+                  >
+                </div>
+              </div>
+
+              <div class="yh">
+                <div class="tc uf wf ag jq">
+                  <div class="tc wf ag">
+                    <img src="images/icon-man.svg" alt="User" />
+                    <p>Kamel Kebir</p>
+                  </div>
+                  <div class="tc wf ag">
+                    <img src="images/icon-calender.svg" alt="Calender" />
+                    <p>10 Octobre 2024</p>
+                  </div>
+                </div>
+                <h4 class="ek tj ml il kk wm xl eq lb">
+                  <a href="blog-single.html">Revue FTMO 2024 : Tout ce que vous devez savoir sur le FTMO Prop Firm</a>
+                </h4>
+              </div>
+            </div>
+
+            <!-- Blog Item -->
+            <div class="animate_top sg vk rm xm">
+              <div class="c rc i z-1 pg">
+                <img class="w-full" src="images/Blog4.png" alt="Blog" />
+
+                <div
+                  class="im h r s df vd yc wg tc wf xf al hh/20 nl il z-10"
+                >
+                  <a href="./blog-single.html" class="vc ek rg lk gh sl ml il gi hi"
+                    >En savoir plus</a
+                  >
+                </div>
+              </div>
+
+              <div class="yh">
+                <div class="tc uf wf ag jq">
+                  <div class="tc wf ag">
+                    <img src="images/icon-man.svg" alt="User" />
+                    <p>Kamel Kebir</p>
+                  </div>
+                  <div class="tc wf ag">
+                    <img src="images/icon-calender.svg" alt="Calender" />
+                    <p>20 Octobre 2024</p>
+                  </div>
+                </div>
+                <h4 class="ek tj ml il kk wm xl eq lb">
+                  <a href="blog-single.html">L'avenir du Prop Trading : Quelle est la prochaine étape pour les traders ?</a>
+                </h4>
+              </div>
+            </div>
+
+            <!-- Blog Item -->
+            <div class="animate_top sg vk rm xm">
+              <div class="c rc i z-1 pg">
+                <img class="w-full" src="images/Blog5.png" alt="Blog" />
+
+                <div
+                  class="im h r s df vd yc wg tc wf xf al hh/20 nl il z-10"
+                >
+                  <a href="./blog-single.html" class="vc ek rg lk gh sl ml il gi hi"
+                    >En savoir plus</a
+                  >
+                </div>
+              </div>
+
+              <div class="yh">
+                <div class="tc uf wf ag jq">
+                  <div class="tc wf ag">
+                    <img src="images/icon-man.svg" alt="User" />
+                    <p>Kamel Kebir</p>
+                  </div>
+                  <div class="tc wf ag">
+                    <img src="images/icon-calender.svg" alt="Calender" />
+                    <p>18 Novembre 2024</p>
+                  </div>
+                </div>
+                <h4 class="ek tj ml il kk wm xl eq lb">
+                  <a href="blog-single.html">Programmes de financement instantané et programmes d'évaluation : Quel est le meilleur choix pour vous ?</a>
+                </h4>
+              </div>
+            </div>
+
+            <!-- Blog Item -->
+            <div class="animate_top sg vk rm xm">
+              <div class="c rc i z-1 pg">
+                <img class="w-full" src="images/Blog6.png" alt="Blog" />
+
+                <div
+                  class="im h r s df vd yc wg tc wf xf al hh/20 nl il z-10"
+                >
+                  <a href="./blog-single.html" class="vc ek rg lk gh sl ml il gi hi"
+                    >En savoir plus</a
+                  >
+                </div>
+              </div>
+
+              <div class="yh">
+                <div class="tc uf wf ag jq">
+                  <div class="tc wf ag">
+                    <img src="images/icon-man.svg" alt="User" />
+                    <p>Kamel Kebir</p>
+                  </div>
+                  <div class="tc wf ag">
+                    <img src="images/icon-calender.svg" alt="Calender" />
+                    <p>20 Novembre 2024</p>
+                  </div>
+                </div>
+                <h4 class="ek tj ml il kk wm xl eq lb">
+                  <a href="blog-single.html">Élaborer un plan de trading pour le Prop Trading</a>
+                </h4>
+              </div>
+            </div>
+
+            <!-- Blog Item -->
+            <div class="animate_top sg vk rm xm">
+              <div class="c rc i z-1 pg">
+                <img class="w-full" src="images/Blog2.png" alt="Blog" />
+
+                <div
+                  class="im h r s df vd yc wg tc wf xf al hh/20 nl il z-10"
+                >
+                  <a href="./blog-single.html" class="vc ek rg lk gh sl ml il gi hi"
+                    >En savoir plus</a
+                  >
+                </div>
+              </div>
+
+              <div class="yh">
+                <div class="tc uf wf ag jq">
+                  <div class="tc wf ag">
+                    <img src="images/icon-man.svg" alt="User" />
+                    <p>Kamel Kebir</p>
+                  </div>
+                  <div class="tc wf ag">
+                    <img src="images/icon-calender.svg" alt="Calender" />
+                    <p>28 Novembre 2024</p>
+                  </div>
+                </div>
+                <h4 class="ek tj ml il kk wm xl eq lb">
+                  <a href="blog-single.html">La technologie dans le Prop Trading : Des outils qui changent la donne</a>
+                </h4>
+              </div>
+            </div>
+
+            <!-- Blog Item -->
+            <div class="animate_top sg vk rm xm">
+              <div class="c rc i z-1 pg">
+                <img class="w-full" src="images/Blog1.png" alt="Blog" />
+
+                <div
+                  class="im h r s df vd yc wg tc wf xf al hh/20 nl il z-10"
+                >
+                  <a href="./blog-single.html" class="vc ek rg lk gh sl ml il gi hi"
+                    >En savoir plus</a
+                  >
+                </div>
+              </div>
+
+              <div class="yh">
+                <div class="tc uf wf ag jq">
+                  <div class="tc wf ag">
+                    <img src="images/icon-man.svg" alt="User" />
+                    <p>Kamel Kebir</p>
+                  </div>
+                  <div class="tc wf ag">
+                    <img src="images/icon-calender.svg" alt="Calender" />
+                    <p>4 Décembre 2024</p>
+                  </div>
+                </div>
+                <h4 class="ek tj ml il kk wm xl eq lb">
+                  <a href="blog-single.html">Naviguer dans le paysage des principales sociétés de prop trading de 2024 : Guide de l'initié</a>
+                </h4>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <div class="mb lo bq i ua">
+            <nav>
+              <ul class="tc wf xf bg">
+                <li>
+                  <a
+                    class="c tc wf xf wd in zc hn rg uj fo wk xm ml il hh rm tl zm yl an"
+                    href="#"
+                  >
+                    <svg class="th lm ml il" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2.93884 6.99999L7.88884 11.95L6.47484 13.364L0.11084 6.99999L6.47484 0.635986L7.88884 2.04999L2.93884 6.99999Z" />
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="c tc wf xf wd in zc hn rg uj fo wk xm ml il hh rm tl zm yl an"
+                    href="#"
+                  >
+                    2
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="c tc wf xf wd in zc hn rg uj fo wk xm ml il hh rm tl zm yl an"
+                    href="#"
+                  >
+                    3
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="c tc wf xf wd in zc hn rg uj fo wk xm ml il hh rm tl zm yl an"
+                    href="#"
+                  >
+                    4
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="c tc wf xf wd in zc hn rg uj fo wk xm ml il hh rm tl zm yl an"
+                    href="#"
+                  >
+                    ...
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="c tc wf xf wd in zc hn rg uj fo wk xm ml il hh rm tl zm yl an"
+                    href="#"
+                  >
+                    12
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="c tc wf xf wd in zc hn rg uj fo wk xm ml il hh rm tl zm yl an"
+                    href="#"
+                  >
+                    <svg class="th lm ml il" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5.06067 7.00001L0.110671 2.05001L1.52467 0.636014L7.88867 7.00001L1.52467 13.364L0.110672 11.95L5.06067 7.00001Z" fill="#fefdfo" />
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <!-- Pagination -->
+        </div>
+      </section>
+      <!-- ===== Blog Grid End ===== -->
+
+      <!-- ===== CTA Start ===== -->
+      <section class="i pg gh ji">
+        <!-- Bg Shape -->
+        <img class="h p q" src="images/shape-16.svg" alt="Bg Shape" />
+      
+        <div class="bb ye i z-10 ki xn dr">
+          <div class="tc uf sn tn un gg">
+            <div class="animate_left to/2">
+              <h2 class="fk vj zp pr lk ac">
+                Rejoignez notre communauté sur Discord
+              </h2>
+              <p class="lk">
+                Rejoignez notre serveur Discord pour échanger, partager des conseils et rester informé des dernières actualités. Bénéficiez d'un accompagnement, posez vos questions et développez votre potentiel aux côtés d'autres membres motivés
+              </p>
+            </div>
+            <div class="animate_right bf">
+              <a href="#" class="vc ek kk hh rg ol il cm gi hi">
+                Rejoindre maintenant
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CTA End ===== -->
+    </main>
+    <!-- ===== Footer Start ===== -->
+    <footer>
+      <div class="bb ze ki xn 2xl:ud-px-0">
+        <!-- Footer Top -->
+        <div class="ji gp">
+          <div class="tc uf ap gg fp">
+            <!-- Logo et Description -->
+            <div class="animate_top zd/2 to/4">
+              <a href="index.html">
+                <img src="imagesV2/LogoValide.png" alt="Logo" class="om" />
+                <img src="imagesV2/LogoValide.png" alt="Logo" class="xc nm" />
+              </a>
+              <p class="lc fb">Votre partenaire de confiance pour relever tous vos défis et réussir dans vos projets.</p>
+    
+              <!-- Réseaux Sociaux -->
+              <ul class="tc wf fg flex gap-4">
+                <!-- Facebook -->
+                <li>
+                  <a href="https://www.facebook.com/people/Valide-Mon-Challenge/61566562033644/?mibextid=wwXIfr&rdid=N2MZ235y9lWvzGMm&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F15pHCb65R2%2F%3Fmibextid%3DwwXIfr" class="c tc wf xf ie ld rg ml il tl" aria-label="Facebook">
+                    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#1877F2">
+                      <path d="M9 8H7V12H9V20H13V12H16L17 8H13V6.5C13 6.224 13.224 6 13.5 6H17V2H13.5C11.015 2 9 4.015 9 6.5V8Z"/>
+                    </svg>
+                  </a>
+                </li>
+                <!-- Twitter -->
+                <li>
+                  <a href="https://x.com/ValideChallenge" class="c tc wf xf ie ld rg ml il tl" aria-label="Twitter">
+                    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#1DA1F2">
+                      <path d="M23 3A10.9 10.9 0 0 1 20.78 3.63 4.48 4.48 0 0 0 12.3 7.5V8A10.66 10.66 0 0 1 3 4.24a4.49 4.49 0 0 0 1.4 6 4.4 4.4 0 0 1-2-.55v.06a4.48 4.48 0 0 0 3.6 4.4 4.52 4.52 0 0 1-2 .08 4.49 4.49 0 0 0 4.2 3.1A9 9 0 0 1 2 19.54 12.7 12.7 0 0 0 7 21a12.8 12.8 0 0 0 12.92-13.45A9.43 9.43 0 0 0 23 3Z"/>
+                    </svg>
+                  </a>
+                </li>
+                <!-- Instagram -->
+                <li>
+                  <a href="https://www.instagram.com/validemonchallenge/" class="c tc wf xf ie ld rg ml il tl" aria-label="Instagram">
+                    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#E4405F">
+                      <path d="M12 2.2c3.2 0 3.584.012 4.847.07 1.17.054 1.997.246 2.617.52a5.4 5.4 0 0 1 1.98 1.28 5.4 5.4 0 0 1 1.28 1.98c.274.62.466 1.446.52 2.617.058 1.263.07 1.647.07 4.847s-.012 3.584-.07 4.847c-.054 1.17-.246 1.997-.52 2.617a5.4 5.4 0 0 1-1.28 1.98 5.4 5.4 0 0 1-1.98 1.28c-.62.274-1.446.466-2.617.52-1.263.058-1.647.07-4.847.07s-3.584-.012-4.847-.07c-1.17-.054-1.997-.246-2.617-.52a5.4 5.4 0 0 1-1.98-1.28 5.4 5.4 0 0 1-1.28-1.98c-.274-.62-.466-1.446-.52-2.617C2.212 15.584 2.2 15.2 2.2 12s.012-3.584.07-4.847c.054-1.17.246-1.997.52-2.617a5.4 5.4 0 0 1 1.28-1.98 5.4 5.4 0 0 1 1.98-1.28c.62-.274 1.446-.466 2.617-.52C8.416 2.212 8.8 2.2 12 2.2zm0 1.8c-3.19 0-3.567.012-4.828.07-.957.044-1.473.2-1.82.334a3.6 3.6 0 0 0-1.38.9 3.6 3.6 0 0 0-.9 1.38c-.134.347-.29.863-.334 1.82-.058 1.261-.07 1.638-.07 4.828s.012 3.567.07 4.828c.044.957.2 1.473.334 1.82a3.6 3.6 0 0 0 .9 1.38 3.6 3.6 0 0 0 1.38.9c.347.134.863.29 1.82.334 1.261.058 1.638.07 4.828.07s3.567-.012 4.828-.07c.957-.044 1.473-.2 1.82-.334a3.6 3.6 0 0 0 1.38-.9 3.6 3.6 0 0 0 .9-1.38c.134-.347.29-.863.334-1.82.058-1.261.07-1.638.07-4.828s-.012-3.567-.07-4.828c-.044-.957-.2-1.473-.334-1.82a3.6 3.6 0 0 0-.9-1.38 3.6 3.6 0 0 0-1.38-.9c-.347-.134-.863-.29-1.82-.334C15.567 4.012 15.19 4 12 4zm0 3.6a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0-8.8zm0 7.2a2.8 2.8 0 1 0 0-5.6 2.8 2.8 0 0 0 0 5.6zm4.8-8.6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+    
+            <!-- Sections -->
+            <div class="vd ro tc sf rn un gg vn">
+              <!-- Liens Rapides -->
+              <div class="animate_top">
+                <h4 class="kk wm tj ec">Liens Rapides</h4>
+                <ul>
+                  <li><a href="#" class="sc xl vb">Accueil</a></li>
+                  <li><a href="#" class="sc xl vb">Nos Services</a></li>
+                  <li><a href="#" class="sc xl vb">À Propos</a></li>
+                  <li><a href="#" class="sc xl vb">Contact</a></li>
+                </ul>
+              </div>
+    
+              <!-- Services -->
+              <div class="animate_top">
+                <h4 class="kk wm tj ec">Services</h4>
+                <ul>
+                  <li><a href="#" class="sc xl vb">Formation Prop Firms</a></li>
+                  <li><a href="#" class="sc xl vb">Accompagnement</a></li>
+                  <li><a href="#" class="sc xl vb">Analyse des Marchés</a></li>
+                  <li><a href="#" class="sc xl vb">Ressources Gratuits</a></li>
+                </ul>
+              </div>
+    
+              <!-- Support -->
+              <div class="animate_top">
+                <h4 class="kk wm tj ec">Support</h4>
+                <ul>
+                  <li><a href="#" class="sc xl vb">Centre d'Aide</a></li>
+                  <li><a href="#" class="sc xl vb">FAQ</a></li>
+                  <li><a href="#" class="sc xl vb">Notre Blog</a></li>
+                  <li><a href="#" class="sc xl vb">Contactez-nous</a></li>
+                </ul>
+              </div>
+    
+              <!-- Newsletter -->
+              <div class="animate_top">
+                <h4 class="kk wm tj ec">Newsletter</h4>
+                <p class="ac qe">Abonnez-vous pour recevoir nos dernières actualités.</p>
+                <form action="https://www.validemonchallenge.com/404.html" method="GET">
+                  <div class="i">
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Votre adresse email"
+                      class="vd sm _g ch pm vk xm rg gm dm dn gi mi"
+                      required
+                    />
+                    <button type="submit" class="h q fi">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.1175 1.17318L18.5025 9.63484C18.5678 9.67081 18.6223 9.72365 18.6602 9.78786C18.6982 9.85206 18.7182 9.92527 18.7182 9.99984C18.7182 10.0744 18.6982 10.1476 18.6602 10.2118C18.6223 10.276 18.5678 10.3289 18.5025 10.3648L3.1175 18.8265C3.05406 18.8614 2.98262 18.8792 2.91023 18.8781C2.83783 18.8769 2.76698 18.857 2.70465 18.8201C2.64232 18.7833 2.59066 18.7308 2.55478 18.6679C2.51889 18.6051 2.50001 18.5339 2.5 18.4615V1.53818C2.50001 1.46577 2.51889 1.39462 2.55478 1.33174C2.59066 1.26885 2.64232 1.2164 2.70465 1.17956C2.76698 1.14272 2.83783 1.12275 2.91023 1.12163C2.98262 1.12051 3.05406 1.13828 3.1175 1.17318Z"
+                          fill="#ffffff"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Footer Top -->
+      </div>
+    
+    
+      <div class="bh ch pm tc uf sf yo wf xf ap cg fp bj" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <div class="animate_top" style="margin-bottom: 10px;">
+          <ul class="tc wf gg" style="display: flex; gap: 15px; justify-content: center; padding: 0; list-style: none;">
+            <li><a href="#" class="xl" style="color: #838489; text-decoration: none;">Français</a></li>
+            <li><a href="#" class="xl" style="color: #838489; text-decoration: none;">Politique de Confidentialité</a></li>
+            <li><a href="index.html#support" class="xl" style="color: #838489; text-decoration: none;">Support</a></li>
+          </ul>
+        </div>
+        <div class="animate_top">
+          <p style="margin: 0; color: #838489;">&copy; 2024 ValideTonChallenge. Tous droits réservés.</p>
+        </div>
+      </div>
+</footer>
+
+    <!-- ===== Footer End ===== -->
+
+    <!-- ====== Back To Top Start ===== -->
+    <button
+  class="xc wf xf ie ld vg sr gh tr g sa ta _a"
+  @click="window.scrollTo({top: 0, behavior: 'smooth'})"
+  @scroll.window="scrollTop = (window.pageYOffset > 50) ? true : false"
+  :class="{ 'uc' : scrollTop }"
+>
+  <svg class="uh se qd" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z" />
+  </svg>
+</button>
+
+    <!-- ====== Back To Top End ===== -->
+  <script defer src="bundle.js"></script></body>
+</html>
