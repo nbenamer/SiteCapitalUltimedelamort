@@ -1,0 +1,34 @@
+[
+    {
+        "title": "Comment réussir en trading ?",
+        "author": "Marc Antoine",
+        "date": "2025-01-01",
+        "content": "Découvrez les bases essentielles pour réussir sur les marchés financiers.",
+        "image": "trading-success.jpg",
+        "category": "Trading"
+    },
+    {
+        "title": "Les erreurs à éviter en crypto",
+        "author": "Karim Rebiai",
+        "date": "2025-01-05",
+        "content": "Apprenez à reconnaître et éviter les pièges courants dans le trading de cryptomonnaies.",
+        "image": "crypto-errors.jpg",
+        "category": "Cryptomonnaie"
+    },
+    {
+        "title": "Introduction au Swing Trading",
+        "author": "Sébastien Dupont",
+        "date": "2025-01-10",
+        "content": "Les bases du swing trading pour maximiser vos profits.",
+        "image": "swing-trading.jpg",
+        "category": "Trading"
+    },
+    {
+        "title": "Comprendre les Stablecoins",
+        "author": "Karim Rebiai",
+        "date": "2025-01-15",
+        "content": "Stablecoins : Leur rôle dans l'économie crypto.",
+        "image": "stablecoins.jpg",
+        "category": "Cryptomonnaie"
+    }
+]
