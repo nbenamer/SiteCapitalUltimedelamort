@@ -10,10 +10,6 @@
     <meta name="rating" content="general" />
     <meta name="language" content="English" />
     <meta name="application-name" content="Inazuma" />
-    <meta
-      name="description"
-      content="Tailwind CSS Company Landing Page Template by Ranyeh."
-    />
     <meta name="keywords" content="company" />
     <meta
       name="twitter:title"
@@ -26,17 +22,6 @@
     <meta name="twitter:image" content="./assets/img/inazu
     
   ma-cover.png" />
-    <meta
-      content="Inazuma | Tailwind CSS Company Landing Page"
-      property="og:title"
-    />
-    <meta content="Inazuma" property="og:site_name" />
-    <meta
-      content="Tailwind CSS Company Landing Page Template by Ranyeh."
-      property="og:description"
-    />
-    <meta content="./assets/img/inazuma-cover.png" property="og:image" />
-    <meta content="https://ranyeh24.github.io/inazuma-tailwind" property="og:url" />
     <meta content="website" property="og:type" />
 
     <meta name="msapplication-TileColor" content="#3d63dd" />
@@ -209,6 +194,23 @@
     <main class="flex-grow container mx-auto pt-24 pb-16 px-4">
         <h1 class="text-3xl font-bold text-center mb-8">Bienvenue sur le blog Gère Ton Capital</h1>
         <p class="text-center">Découvrez les dernières actualités et conseils sur la gestion de votre capital.</p>
+        <main>
+          <section id="filter-container">
+              <select id="category-filter">
+                  <option value="all">Toutes les catégories</option>
+                  <option value="Trading">Trading</option>
+                  <option value="Cryptomonnaie">Cryptomonnaie</option>
+              </select>
+          </section>
+          <section id="articles-container">
+              <!-- Les articles seront chargés ici -->
+          </section>
+          <section id="pagination-container">
+              <button id="prev-page" disabled>Précédent</button>
+              <span id="page-info"></span>
+              <button id="next-page" disabled>Suivant</button>
+          </section>
+      </main>
     </main>
 
    
@@ -447,6 +449,7 @@
       });
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="articles.js"></script>
 
 </body>
 </html>
